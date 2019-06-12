@@ -93,13 +93,19 @@ public class Controller {
 
     }
 
-    public void hillClick(MouseEvent mouseEvent){
-
+    public void saClick(MouseEvent mouseEvent){
+        SimulatedAnnealing hca = new SimulatedAnnealing(tileArray, this);
+        hca.main();
     }
 
-    public void loadClick(MouseEvent mouseEvent) {
+    public void loadGClick(MouseEvent mouseEvent) {
         FromFileOperator ffo = new FromFileOperator(this);
-        ffo.main();
+        ffo.mainG();
+    }
+
+    public void loadSAClick(MouseEvent mouseEvent) {
+        FromFileOperator ffo = new FromFileOperator(this);
+        ffo.mainSA();
     }
 
     public void showVisualization(Path path){
@@ -114,9 +120,6 @@ public class Controller {
     public void showVisualizationFromFile(Path path, List<Tile> cityList, int max){
         double multiplier = 0.53;
         double radius = (1.0/(double)max) * 200.0;
-
-        System.out.println(multiplier);
-        System.out.println(radius);
 
         Visualization vis = new Visualization(cityList,path.getPathList(),multiplier,radius);
         vis.start(stage);

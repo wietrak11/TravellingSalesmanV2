@@ -18,18 +18,27 @@ public class FromFileOperator {
         this.controller = controller;
     }
 
-    public void main(){
+    public void mainG(){
         readFromFile();
         setTileArray();
 
         GreedyAlg ga = new GreedyAlg(tileArray,controller,true, this);
+
         ga.main();
+    }
+
+    public void mainSA(){
+        readFromFile();
+        setTileArray();
+
+        SimulatedAnnealing sa = new SimulatedAnnealing(tileArray,controller,true, this);
+
+        sa.main();
     }
 
     public void setTileArray(){
 
         tileArray = new Tile[max+1][max+1];
-        System.out.println(tileArray.length);
 
         for(int i = 0; i< max+1; i++){
             for(int j = 0; j< max+1; j++){
